@@ -12,7 +12,12 @@ def main(pagina):
     chat = ft.Column()
 
     def enviar_mensagem(evento):
-        print("Mensagem enviada")
+        texto_mensagem = campo_mensagem.value
+        nome_usuario = campo_nome_usuario.value
+        texto_chat = ft.Text(f"{nome_usuario} : {texto_mensagem}")
+        chat.controls.append(texto_chat)
+        campo_mensagem.value = ""
+        pagina.update()
 
     campo_mensagem = ft.TextField(label="Digite sua mensagem", on_submit=enviar_mensagem)
     botao_enviar_mensagem = ft.ElevatedButton("Enviar", on_click=enviar_mensagem)
@@ -25,6 +30,9 @@ def main(pagina):
         janela.open = False
         pagina.add(chat)
         pagina.add(linha_mensagem)
+        texto_entrada_chat = f"{campo_nome_usuario.value} entrou no chat..."
+        print(texto_entrada_chat)
+        # chat.controls.append(texto_entrada_chat)
 
         pagina.update()
         print("Entrei no char")
