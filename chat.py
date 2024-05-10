@@ -12,8 +12,9 @@ def main(pagina):
     chat = ft.Column()
 
     def enviar_mensagem_tunel(mensagem):
-        print("Mensagem enviada no tunel")
-        print(mensagem)
+        texto_chat = ft.Text(mensagem)
+        chat.controls.append(texto_chat)
+        pagina.update()
 
     pagina.pubsub.subscribe(enviar_mensagem_tunel)
 
@@ -22,8 +23,6 @@ def main(pagina):
         nome_usuario = campo_nome_usuario.value
         mensagem = f"{nome_usuario} : {texto_mensagem}"
         pagina.pubsub.send_all(mensagem)
-        texto_chat = ft.Text(mensagem)
-        chat.controls.append(texto_chat)
         campo_mensagem.value = ""
         pagina.update()
 
@@ -38,8 +37,8 @@ def main(pagina):
         janela.open = False
         pagina.add(chat)
         pagina.add(linha_mensagem)
-        texto_entrada_chat = ft.Text(f"{campo_nome_usuario.value} entrou no chat...")
-        chat.controls.append(texto_entrada_chat)
+        mensagem = f"{campo_nome_usuario.value} entrou no chat..."
+        pagina.pubsub.send_all(mensagem)
         pagina.update()
         print("Entrei no char")
 
