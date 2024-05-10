@@ -11,10 +11,18 @@ def main(pagina):
 
     chat = ft.Column()
 
+    def enviar_mensagem_tunel(mensagem):
+        print("Mensagem enviada no tunel")
+        print(mensagem)
+
+    pagina.pubsub.subscribe(enviar_mensagem_tunel)
+
     def enviar_mensagem(evento):
         texto_mensagem = campo_mensagem.value
         nome_usuario = campo_nome_usuario.value
-        texto_chat = ft.Text(f"{nome_usuario} : {texto_mensagem}")
+        mensagem = f"{nome_usuario} : {texto_mensagem}"
+        pagina.pubsub.send_all(mensagem)
+        texto_chat = ft.Text(mensagem)
         chat.controls.append(texto_chat)
         campo_mensagem.value = ""
         pagina.update()
