@@ -30,10 +30,8 @@ def main(pagina):
         janela.open = False
         pagina.add(chat)
         pagina.add(linha_mensagem)
-        texto_entrada_chat = f"{campo_nome_usuario.value} entrou no chat..."
-        print(texto_entrada_chat)
-        # chat.controls.append(texto_entrada_chat)
-
+        texto_entrada_chat = ft.Text(f"{campo_nome_usuario.value} entrou no chat...")
+        chat.controls.append(texto_entrada_chat)
         pagina.update()
         print("Entrei no char")
 
