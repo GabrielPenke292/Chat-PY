@@ -1,1 +1,14 @@
-## Inicio
+# Título: Penke ZAP
+
+# Botão de iniciar chat
+    # pop up
+    # Título "Bem vindo ao Penke ZAP"
+    # Campo de texto "Escreva seu nome"
+    # Botão entrar no chat
+        # Apaga o título
+        # Fechar popup
+        # Carregar o chat
+            # mensagens já enviadas
+            # Campo: digite sua mensagem
+            # botão de enviar mensage
+            
