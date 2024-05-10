@@ -7,12 +7,34 @@ import flet as ft
 def main(pagina):
     # cria o elemento
     titulo = ft.Text("Penke ZAP")
+    titulo_janela = ft.Text("Bem vindo ao Penke Zap")
+    campo_nome_usuario = ft.TextField(label="Escreva seu nome no site")
+
+    chat = ft.Column()
+    campo_mensagem = ft.TextField(label="Digite sua mensagem")
+
+    def enviar_mensagem(evento):
+        print("Mensagem enviada")
+
+    botao_enviar_mensagem = ft.ElevatedButton("Enviar", on_click=enviar_mensagem)
+
+    linha_mensagem = ft.Row([campo_mensagem,botao_enviar_mensagem])
+
+    def entrar_chat(evento):
+        pagina.remove(titulo)
+        pagina.remove(botao_iniciar)
+        janela.open = False
+        pagina.add(chat)
+        pagina.add(linha_mensagem)
+
+        pagina.update()
+        print("Entrei no char")
+
+    botao_entrar = ft.ElevatedButton("Entrar no chat", on_click=entrar_chat)
+    janela = ft.AlertDialog(title=titulo_janela, content=campo_nome_usuario, actions=[botao_entrar])
 
     def iniciar_chat(evento):
-        titulo_janela = ft.Text("Bem vindo ao Penke Zap")
-        campo_nome_usuario = ft.TextField(label="Escreva seu nome no site")
-        botao_entrar = ft.ElevatedButton("Entrar no chat")
-        janela = ft.AlertDialog(title=titulo_janela, content=campo_nome_usuario, actions=[botao_entrar])
+        
         pagina.dialog = janela
         janela.open = True
         pagina.update()        
