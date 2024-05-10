@@ -8,14 +8,13 @@ def main(pagina):
     # cria o elemento
     titulo = ft.Text("Penke ZAP")
     titulo_janela = ft.Text("Bem vindo ao Penke Zap")
-    campo_nome_usuario = ft.TextField(label="Escreva seu nome no site")
 
     chat = ft.Column()
-    campo_mensagem = ft.TextField(label="Digite sua mensagem")
 
     def enviar_mensagem(evento):
         print("Mensagem enviada")
 
+    campo_mensagem = ft.TextField(label="Digite sua mensagem", on_submit=enviar_mensagem)
     botao_enviar_mensagem = ft.ElevatedButton("Enviar", on_click=enviar_mensagem)
 
     linha_mensagem = ft.Row([campo_mensagem,botao_enviar_mensagem])
@@ -30,6 +29,7 @@ def main(pagina):
         pagina.update()
         print("Entrei no char")
 
+    campo_nome_usuario = ft.TextField(label="Escreva seu nome no site", on_submit=entrar_chat)
     botao_entrar = ft.ElevatedButton("Entrar no chat", on_click=entrar_chat)
     janela = ft.AlertDialog(title=titulo_janela, content=campo_nome_usuario, actions=[botao_entrar])
 
