@@ -15,6 +15,8 @@
 
 ---------------------
 # Anotações
-FLET 
-    Front End
-    Back End
+# FLET 
+#    Front End
+#    Back End
+
+# Comando -> pip install flet (executar no terminal)
